@@ -1,0 +1,81 @@
+<!-- MainPage.xaml -->
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="YourProject.MainPage"
+    BackgroundColor="#1E1E1E">
+
+    <!-- ثيم داكن للمبرمجين -->
+    <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="*">
+        
+        <!-- شريط الأدوات العلوي: تنفيذ، حفظ، إصلاح -->
+        <HorizontalStackLayout
+            Grid.Row="0"
+            BackgroundColor="#2D2D2D"
+            Padding="5"
+            Spacing="10">
+
+            <Button
+                Text="▶ RUN"
+                Clicked="OnRunClicked"
+                BackgroundColor="Green"
+                TextColor="White" />
+
+            <Button
+                Text="🛠 FIX"
+                Clicked="OnFixErrorClicked"
+                BackgroundColor="Orange"
+                TextColor="White" />
+
+            <Button
+                Text="📁 FILES"
+                Clicked="OnFilesClicked"
+                BackgroundColor="Blue"
+                TextColor="White" />
+
+        </HorizontalStackLayout>
+
+        <!-- منطقة المحرر (Editor) -->
+        <Editor
+            x:Name="CodeEditor"
+            Grid.Row="1"
+            BackgroundColor="#1E1E1E"
+            TextColor="#D4D4D4"
+            FontSize="14"
+            FontFamily="monospace"
+            TextChanged="OnCodeChanged" />
+
+        <!-- نافذة المخرجات (Terminal/Output) - تظهر عند التشغيل -->
+        <VerticalStackLayout
+            x:Name="OutputPanel"
+            Grid.Row="1"
+            IsVisible="False"
+            BackgroundColor="Black">
+
+            <Label
+                Text="[TERMINAL OUTPUT]"
+                TextColor="Lime"
+                FontSize="10"
+                Margin="5,0" />
+
+            <Editor
+                x:Name="TerminalOutput"
+                IsReadOnly="True"
+                TextColor="Lime"
+                BackgroundColor="Black" />
+
+        </VerticalStackLayout>
+
+        <!-- شريط الحالة السفلي -->
+        <Label
+            Grid.Row="2"
+            x:Name="StatusBar"
+            Text="Ready | C# Shell Mode"
+            TextColor="Gray"
+            FontSize="10"
+            Padding="5" />
+
+    </Grid>
+
+</ContentPage>
+
